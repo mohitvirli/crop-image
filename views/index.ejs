@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+        <title><%= title %></title>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css'>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <h1>Image Upload</h1>
+    <body>
+        <div class='ui container main-wrapper'>
+            <h1>Crop Tool</h1>
+            <p>Welcome to Crop tool. Made with <3</p>
 
-    <input type='file' name='avatar' />
+            <div class='file-upload-button-wrapper'>
+                <input type="file" id="file-upload" />
+                <label for="file-upload" class="ui green floated button">
+                    <i class="ui upload icon"></i>
+                    Upload image
+                </label>
+                <div class="ui left pointing red basic label" id='image-error'>
+                    <!-- Insert the error Message here -->
+                </div>
+            </div>
+            <div class='images-wrapper'>
+                <div id='preview' class='preview-image-wrapper'><!-- Insert Original Image Preview --></div>
 
-    <div id='preview'></div>
+                <div id='cropped-images-wrapper'><!-- Insert Cropped images her --></div>
+            </div>
 
-    <!--Hidden canvas for image manipulation-->
-    <canvas id="canvas" style='display: none'></canvas>
+        </div>
 
-    <div id='cropped-images-wrapper'>
-        <!--<canvas id="myCanvas2"></canvas>-->
-        <!--<canvas id="myCanvas3"></canvas>-->
-        <!--<canvas id="myCanvas4"></canvas>-->
-    </div>
-
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src='/javascripts/main.js'></script>
-  </body>
+        <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js'></script>
+        <script src='/javascripts/crop.js'></script>
+        <script src='/javascripts/main.js'></script>
+    </body>
 </html>
