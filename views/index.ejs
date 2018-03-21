@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <h1>Image Upload</h1>
+    <input type='file' name='avatar' />
+    <div id='preview'></div>
+    <div id='cropped-images-wrapper'>
+        <canvas id="myCanvas1" style='display: none'></canvas>
+        <!--<canvas id="myCanvas2"></canvas>-->
+        <!--<canvas id="myCanvas3"></canvas>-->
+        <!--<canvas id="myCanvas4"></canvas>-->
+    </div>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src='/javascripts/main.js'></script>
+  </body>
+</html>

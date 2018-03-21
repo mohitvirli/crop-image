@@ -1,0 +1,33 @@
+{
+  "name": "crop-image",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "~2.5.7",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "image-data-uri": "^1.0.1",
+    "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0",
+    "shortid": "^2.2.8"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "extends": [
+      "eslint:recommended"
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  }
+}
