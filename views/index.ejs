@@ -8,10 +8,15 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <h1>Image Upload</h1>
+
     <input type='file' name='avatar' />
+
     <div id='preview'></div>
+
+    <!--Hidden canvas for image manipulation-->
+    <canvas id="canvas" style='display: none'></canvas>
+
     <div id='cropped-images-wrapper'>
-        <canvas id="myCanvas1" style='display: none'></canvas>
         <!--<canvas id="myCanvas2"></canvas>-->
         <!--<canvas id="myCanvas3"></canvas>-->
         <!--<canvas id="myCanvas4"></canvas>-->

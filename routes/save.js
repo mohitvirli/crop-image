@@ -6,8 +6,15 @@ var shortid = require('shortid');
 router.post('/', function (req, res) {
   const filePath = './public/images/' + shortid.generate();
 
-  imageDataURI.outputFile(req.body.uri, filePath)
-    .then(url => res.status(200).send(url));
+  const promiseArray = Object.keys(req.body.dataURIs).map(key => {
+    const uri = req.body.dataURIs[key];
+    return imageDataURI.outputFile(uri, filePath + '/' + key);
+  });
+
+  Promise.all(promiseArray).then(urls => {
+    res.status(200).send(urls);
+  })
+
 });
 
 

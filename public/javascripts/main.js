@@ -2,6 +2,12 @@
 const ORIGINAL_WIDTH = 1024,
   ORIGINAL_HEIGHT = 1024;
 
+const DIMENSIONS = [
+  {width: 755, height: 450},
+  {width: 365, height: 450},
+  {width: 365, height: 212},
+  {width: 380, height: 380}
+];
 
 const fileToRead = document.querySelector('input[type=file]');
 
@@ -37,21 +43,21 @@ function previewImage(uri) {
 
 function cropAllImages(mainSourceImage) {
 
-  const canvas = document.querySelector('#myCanvas1'); // Hidden canvas
+  const canvas = document.querySelector('#canvas'); // Hidden canvas
+  const dataURIs = {
+    [`${ORIGINAL_WIDTH}x${ORIGINAL_HEIGHT}`]: mainSourceImage.src
+  };
 
-  const resolutions = [
-    {width: 755, height: 450},
-    {width: 365, height: 450},
-    {width: 365, height: 212},
-    {width: 380, height: 380}
-  ];
-
-  resolutions.forEach(d => {
+  DIMENSIONS.forEach(d => {
     let img = new Image(d.width, d.height);
     img.src = cropImage(mainSourceImage, d.width, d.height, canvas);
+    dataURIs[`${d.width}x${d.height}`] = img.src;
     document.querySelector('#cropped-images-wrapper').appendChild(img); // Selector
-  })
+  });
+
+  saveImages(dataURIs);
 }
+
 function cropImage(imageObj, width, height, canvas) {
   canvas.width = width;
   canvas.height = height;
@@ -62,14 +68,13 @@ function cropImage(imageObj, width, height, canvas) {
   context.drawImage(imageObj, sourceX, sourceY, width, height, 0, 0, width, height);
 
   return canvas.toDataURL('image/png'); // TODO: check for JPEG/PNG?
-  // saveImage(dataURI);
 }
 
-function saveImage(dataURI) {
+function saveImages(dataURIs) {
   // console.log(dataURI); //TODO: add dimensions and filename
-  // axios.post('/save', {
-  //   uri: dataURI
-  // }).then(function (res) {
-  //   console.log(res);
-  // })
+  axios.post('/save', {
+    dataURIs
+  }).then(function (res) {
+    console.log(res);
+  })
 }
