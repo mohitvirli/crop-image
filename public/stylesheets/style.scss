@@ -1,15 +1,16 @@
 .main-wrapper{
 	margin-top: 4em;
 	.file-upload-button-wrapper{
-		margin-bottom: 2em;
 		#file-upload{
 			display: none;
 		}
-		#image-error{
-			visibility: hidden;
-		}
+	}
+	#image-error, #download-images{
+		visibility: hidden;
 	}
 	.images-wrapper{
+
+		margin-top: 2em;
 		display: flex;
 
 		.preview-image-wrapper, #cropped-images-wrapper{

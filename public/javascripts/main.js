@@ -25,6 +25,7 @@ fileToRead.addEventListener("change", function(event) {
 
 function displayContent(data) {
   toggleError();
+
   const preview = document.querySelector('#preview');
   const croppedImagesWrapper = document.querySelector('#cropped-images-wrapper');
 
@@ -49,22 +50,35 @@ function displayContent(data) {
   });
   preview.innerHTML = previewHTML;
   croppedImagesWrapper.innerHTML = croppedImagesHTML;
+
+  downloadImage(data);
 }
 
 
 function saveImages(dataURIs) {
-  // console.log(dataURI); //TODO: add dimensions and filename
-  axios.post('/save', {
+  return axios.post('/save', {
     dataURIs
-  }).then(function (res) {
-    console.log(res);
   })
 }
 
 function toggleError(err) {
   const errorHtml = document.querySelector('#image-error');
+  const downloadImagesButton = document.querySelector('#download-images');
   if (err) {
     errorHtml.innerHTML = err;
     errorHtml.style.visibility = 'visible';
-  } else errorHtml.style.visibility = 'hidden';
+    downloadImagesButton.style.visibility = 'hidden';
+  } else {
+    errorHtml.style.visibility = 'hidden';
+    downloadImagesButton.style.visibility = 'visible';
+  }
+}
+
+function downloadImage(data) {
+  const downloadImagesButton = document.querySelector('#download-images');
+  downloadImagesButton.addEventListener("click", function() {
+    saveImages(data).then(res => {
+      document.location.href = '/downloads?' + res.data.folder;
+    });
+  });
 }

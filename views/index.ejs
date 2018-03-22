@@ -16,16 +16,21 @@
                     <i class="ui upload icon"></i>
                     Upload image
                 </label>
-                <div class="ui left pointing red basic label" id='image-error'>
-                    <!-- Insert the error Message here -->
-                </div>
+
+                <a class="ui primary button" id='download-images'>
+                    Download Cropped Images
+                </a>
             </div>
+
+            <div class="ui below pointing red basic label" id='image-error'>
+                <!-- Insert the error Message here -->
+            </div>
+
             <div class='images-wrapper'>
                 <div id='preview' class='preview-image-wrapper'><!-- Insert Original Image Preview --></div>
 
                 <div id='cropped-images-wrapper'><!-- Insert Cropped images her --></div>
             </div>
-
         </div>
 
         <script src='https://unpkg.com/axios/dist/axios.min.js'></script>

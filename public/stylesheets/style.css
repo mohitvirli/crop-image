@@ -1,12 +1,11 @@
 .main-wrapper {
   margin-top: 4em; }
-  .main-wrapper .file-upload-button-wrapper {
-    margin-bottom: 2em; }
-    .main-wrapper .file-upload-button-wrapper #file-upload {
-      display: none; }
-    .main-wrapper .file-upload-button-wrapper #image-error {
-      visibility: hidden; }
+  .main-wrapper .file-upload-button-wrapper #file-upload {
+    display: none; }
+  .main-wrapper #image-error, .main-wrapper #download-images {
+    visibility: hidden; }
   .main-wrapper .images-wrapper {
+    margin-top: 2em;
     display: flex; }
     .main-wrapper .images-wrapper .preview-image-wrapper, .main-wrapper .images-wrapper #cropped-images-wrapper {
       width: 50%;
