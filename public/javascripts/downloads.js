@@ -1,14 +1,25 @@
-const folder = document.location.search.split('?')[1];
+/**
+ * Client side js for downloads page
+ */
+
+const folder = document.location.search.split('?')[1]; // Captures the url slug
 
 if (folder) {
-  getData(folder).then(setData);
+  getData(folder)
+    .then(setData)
+    .catch(err => {throw err;});
 }
 
+/**
+ * Gets the backend
+ * @param folder
+ * @returns {Promise<T>}
+ */
 function getData(folder) {
   return axios.get(`/save?${folder}`)
     .then(
       res => res.data
-    ).catch(err => {throw err;});
+    );
 }
 
 function setData(data) {
@@ -17,6 +28,7 @@ function setData(data) {
 
   data.forEach(image => {
 
+    // Get the width and height by matching with the file name which is of the type /path/to/1024x768.png
     const [width, height] = image.match(/\d+x\d+/)[0].split('x');
 
     croppedImagesHTML += `
@@ -27,17 +39,5 @@ function setData(data) {
     `;
   });
 
-  croppedImagesWrapper.innerHTML = croppedImagesHTML;
+  croppedImagesWrapper.innerHTML = croppedImagesHTML; // Insert the HTML
 }
-
-
-// function getDimensions(url) {
-//   return new Promise(function (resolve, reject) {
-//     const imageObj = new Image();
-//     imageObj.src = url;
-//     imageObj.onload = function() {
-//       resolve(this);
-//     }
-//   });
-// }
-
